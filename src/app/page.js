@@ -1,95 +1,66 @@
-import Image from 'next/image'
-import styles from './page.module.css'
-
+"use client";
+import Image from "next/image";
+import { useState } from "react";
+import styles from "./page.module.css";
+import Container from "./components/Container/Container";
+import ButtonComponent from "./components/Button/Button";
+import { Smokum } from "next/font/google";
+import IconButton from "./components/iconButton/iconButton";
+import Text from "./components/Text/Text";
+import Space from "./components/Space/Space";
+import Input from "./components/Input/Input";
+import Modal from "./components/Modal/Modal";
+import Table from "./components/Table/Table";
+import Header from "./components/Header/Header";
+import Tag from "./components/Tag/Tag";
 export default function Home() {
+  const columns = ["Name", "Age", "City"];
+  const data = [
+    { Name: "mustafa", Age: 30, City: "New York" },
+    { Name: "ali", Age: 25, City: "bahamas" },
+    { Name: "hamza", Age: 35, City: "OHIO" },
+  ];
+
+  const [modalOpen, setModalOpen] = useState(false);
+
+  const openModal = () => {
+    setModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setModalOpen(false);
+    console.log("closing...");
+  };
+  const handleActionClick = () => {
+    console.log("Action clicked!");
+  };
   return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>src/app/page.js</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
+    <main>
+      <Header brand={"Reason"} onActionClick={handleActionClick} />
+      <Container width={"1000px"}>
+        <ButtonComponent type={"primary"}>button</ButtonComponent>
+        <ButtonComponent type={"secondary"}>button</ButtonComponent>
+        <ButtonComponent type={"default"}>button</ButtonComponent>
+        <IconButton type={"primary"}></IconButton>
+        <IconButton type={"secondary"}></IconButton>
+        <IconButton type={"default"}></IconButton>
+        <Text size={"50px"} bold={"true"} color={"red"}>
+          Text
+        </Text>
+        <Space height={"50px"} width={"50px"}></Space>
 
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore starter templates for Next.js.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
+        <Input placeholder={"heelo"} value={"dd"}></Input>
+        <Space height={"20px"} />
+        <button onClick={openModal}>Open Modal</button>
+        <Modal isOpen={modalOpen} onClose={closeModal}>
+          <h2>This is my modal</h2>
+          <p>Modal content here.</p>
+        </Modal>
+        <Table columns={columns} data={data}></Table>
+        <Tag color={"red"}>summer</Tag>
+        <Tag>winter</Tag>
+        <Tag color={"violet"}>autumn</Tag>
+      </Container>
     </main>
-  )
+  );
 }
