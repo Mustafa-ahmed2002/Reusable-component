@@ -18,11 +18,11 @@ const ModalContainer = styled.div`
   padding: 20px;
   border-radius: 8px;
 `;
+
 const Modal = ({ isOpen, onClose, children }) => {
   if (!isOpen) {
     return null;
   }
-
   return (
     <Overlay>
       <ModalContainer>

@@ -38,9 +38,9 @@ export default function Home() {
     <main>
       <Header brand={"Reason"} onActionClick={handleActionClick} />
       <Container width={"1000px"}>
-        <ButtonComponent type={"primary"}>button</ButtonComponent>
-        <ButtonComponent type={"secondary"}>button</ButtonComponent>
-        <ButtonComponent type={"default"}>button</ButtonComponent>
+        <ButtonComponent type={"primary"}>Primary</ButtonComponent>
+        <ButtonComponent type={"secondary"}>Secondary</ButtonComponent>
+        <ButtonComponent type={"default"}>Default</ButtonComponent>
         <IconButton type={"primary"}></IconButton>
         <IconButton type={"secondary"}></IconButton>
         <IconButton type={"default"}></IconButton>
@@ -48,7 +48,6 @@ export default function Home() {
           Text
         </Text>
         <Space height={"50px"} width={"50px"}></Space>
-
         <Input placeholder={"heelo"} value={"dd"}></Input>
         <Space height={"20px"} />
         <button onClick={openModal}>Open Modal</button>
